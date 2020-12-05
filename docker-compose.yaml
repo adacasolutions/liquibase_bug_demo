@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres:11.5
+    healthcheck:
+      test: "pg_isready -h localhost -p 5432 -q -U postgres"
+      interval: 3s
+      timeout: 5s
+      retries: 5
+  liquibase:
+    image: example_migration:latest
